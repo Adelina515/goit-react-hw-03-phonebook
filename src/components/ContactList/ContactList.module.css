@@ -1,0 +1,20 @@
+.li {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.spanName {
+  margin-right: 15px;
+}
+
+.spanNumber {
+  margin-right: 15px;
+}
+
+.btnDelete {
+  background-color: white;
+}
+button {
+  border-radius: 5px;
+  border-color: rgb(169, 169, 169);
+}
