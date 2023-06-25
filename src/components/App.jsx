@@ -3,6 +3,7 @@ import ContactForm from './ContactForm/ContactForm';
 import { nanoid } from 'nanoid';
 import ContactList from './ContactList/ContactList';
 import Filter from './Filter/Filter';
+import { computeHeadingLevel } from '@testing-library/react';
 
 export class App extends Component {
   state = {
@@ -14,6 +15,22 @@ export class App extends Component {
     ],
     filter: '',
   };
+
+  componentDidMount() {
+    const contactLoc = localStorage.getItem('contacts');
+    console.log(contactLoc);
+    const parsedContact = JSON.parse(contactLoc);
+    if (parsedContact) {
+      this.setState({ contacts: parsedContact });
+    }
+  }
+
+  componentDidUpdate(prevState) {
+    if (this.state.contacts !== prevState.contacts) {
+      console.log('yes');
+      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+    }
+  }
   addContact = contact => {
     const isExist = this.state.contacts.find(
       item => item.name.toLocaleLowerCase() === contact.name.toLocaleLowerCase()
