@@ -25,12 +25,13 @@ export class App extends Component {
     }
   }
 
-  componentDidUpdate(prevState) {
+  componentDidUpdate(_, prevState) {
     if (this.state.contacts !== prevState.contacts) {
       console.log('yes');
       localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
     }
   }
+
   addContact = contact => {
     const isExist = this.state.contacts.find(
       item => item.name.toLocaleLowerCase() === contact.name.toLocaleLowerCase()
